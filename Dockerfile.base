@@ -1,0 +1,27 @@
+FROM --platform=linux/amd64 ubuntu:18.04
+RUN apt update && ln -fs /usr/share/zoneinfo/Asia/Kolkata /etc/localtime
+RUN apt install -y tzdata && dpkg-reconfigure --frontend noninteractive tzdata
+RUN apt update && apt-get install --no-install-recommends python3.6 -y \
+    make \
+    cmake \
+    gcc \
+    g++  \
+    gfortran \
+    musl-dev \
+    libsm6 \
+    libxext6 \
+    libxrender-dev \
+    libsnappy-dev \
+    protobuf-compiler \
+    python3-pip \
+    python3-dev \
+    npm \
+    nodejs \
+    libgl1 \
+    libsndfile1 \
+    python3-opencv \
+    wget
+RUN python3 -m pip install --upgrade pip setuptools wheel
+# Package for data-science 
+# COPY requirements.txt .
+# RUN pip3 install --no-cache-dir numpy==1.19.5 ez_setup && pip3 install --no-cache-dir -r requirements.txt

@@ -1,0 +1,10 @@
+# In Case of auth required
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: cronicle-configmap
+data:
+  credentials.txt: |-
+    aws_access_key_id= <access-key>
+    aws_secret_access_key= <secret-key>

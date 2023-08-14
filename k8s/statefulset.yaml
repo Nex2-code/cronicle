@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: cronicle
+spec:
+  selector:
+    matchLabels:
+      app: cronicle
+  serviceName: cronicle
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: cronicle
+      annotations:
+        # backup.velero.io/backup-volumes: data-ds-cronicle # For Velero backup support
+    spec:
+      terminationGracePeriodSeconds: 10
+      containers:
+      - name: cronicle
+        image: cronicle:latest
+        ports:
+        - containerPort: 3012
+        volumeMounts:
+          - name: data-cronicle
+            mountPath: /opt/cronicle
+          - name: cronicle
+            mountPath: "/home/ubuntu"
+      volumes:
+        - name: cronicle
+          configMap:
+            name: cronicle-configmap
+  volumeClaimTemplates:
+  - metadata:
+      name: data-cronicle
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: standard-rwo
+      resources:
+        requests:
+          storage: 20Gi
