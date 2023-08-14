@@ -1,5 +1,5 @@
 # Description
-Dockerized version of Cronicle with kubernetes Support. 
+Dockerized version of Cronicle with kubernetes Support. <br>
 Cronicle makes scheduling and managing cron jobs easy with UI.
 Cronicle Project/Application Link: https://github.com/jhuckaby/Cronicle
 
