@@ -186,7 +186,7 @@ brotlipy==0.7.0
 pycosat==0.6.3
 supervisor==4.2.4
 Cython==0.29.21
-GitPython==3.1.8
+GitPython==3.1.37
 glob2==0.7
 fsspec==2022.1.0
 ftfy==5.6
